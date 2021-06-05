@@ -11,6 +11,7 @@ public class ex20 {
     public static void main (String[] args) {
         Scanner input = new Scanner(System.in);
         Boolean correct = false;
+        double tax = 0, tax2 = 0;
 
         while (correct.equals(false)) {
             System.out.print("What is the order amount? ");
@@ -28,34 +29,27 @@ public class ex20 {
                     county_in = county_in.replaceAll(" ", "_");
 
                     if (county_in.equals("eau_claire") || county_in.equals("eau_claire_county")) {
-                        double tax = order * .05;
-                        double tax2 = order * .005;
+                        tax = order * .05;
+                        tax2 = order * .005;
                         System.out.printf("The tax is $%.2f.\n", tax + tax2);
-                        System.out.printf("The total is $%.2f.\n", order + tax + tax2);
                     }
                     if (county_in.equals("dunn") || county_in.equals("dunn_county")) {
-                        double tax = order * .05;
-                        double tax2 = order * .004;
+                        tax = order * .05;
+                        tax2 = order * .004;
                         System.out.printf("The tax is $%.2f.\n", tax + tax2);
-                        System.out.printf("The total is $%.2f.\n", order + tax + tax2);
                     }
                 }
 
                 if (state_in.equals("illinois") || (state_in.equals("il"))) {
-                    double tax = order * .08;
+                    tax = order * .08;
                     System.out.printf("The tax is $%.2f.\n", tax);
-                    System.out.printf("the total is $%.2f.\n", order + tax);
                 }
 
-                if (!state_in.equals("illinois") && !state_in.equals("il") &&
-                        !state_in.equals("wisconsin") && !state_in.equals("wi")) {
-                    System.out.printf("The total is $%.2f.\n", order);
-                }
-
+                System.out.printf("The total is $%.2f.\n", order + tax + tax2);
                 correct = true;
             }
             catch (Exception e) {
-                System.out.println("Please only enter numeric values. Try again.\n");
+                System.out.println("\nPlease only enter numeric values. Try again.\n");
                 correct = false;
             }
         }
